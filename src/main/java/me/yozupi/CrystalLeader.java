@@ -41,13 +41,13 @@ public class CrystalLeader extends JavaPlugin {
             Bukkit.getGlobalRegionScheduler().runAtFixedRate(
                     this,
                     task -> new CrystalCleaner().run(),
-                    0L,
+                    1L,
                     20L * 60 * 60
             );
             Bukkit.getGlobalRegionScheduler().runAtFixedRate(
                     this,
                     task -> new ArenaCleaner().run(),
-                    0L,
+                    1L,
                     20L * 60 * 60
             );
 
@@ -93,4 +93,3 @@ public class CrystalLeader extends JavaPlugin {
         return INSTANCE.getConfig().getStringList(path);
     }
 }
-

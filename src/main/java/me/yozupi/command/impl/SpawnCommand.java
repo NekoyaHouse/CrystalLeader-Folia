@@ -4,6 +4,7 @@ import me.yozupi.command.MyCommand;
 import me.yozupi.utils.ChatUtils;
 import me.yozupi.utils.Regions;
 import me.yozupi.utils.Utils;
+import org.bukkit.Location;
 import org.bukkit.command.CommandSender;
 import org.bukkit.entity.Player;
 
@@ -22,7 +23,7 @@ public class SpawnCommand extends MyCommand {
             return true;
         }
 
-        player.teleportAsync(Utils.NETHER.getSpawnLocation().add(0.5, 0, 0.5));
+        player.teleportAsync(new Location(Utils.NETHER, 0.5, 70, 0.5));
 
         return true;
     }

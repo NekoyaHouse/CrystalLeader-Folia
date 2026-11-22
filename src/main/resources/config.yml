@@ -1,13 +1,13 @@
 prefix: "&7[&aCrystalLeader&7] &f"
 
+# 水晶限速
+min_crystal_age: 3
+
 # 掉落物清理
 DropCleaner:
   enable: true
   interval-minutes: 2
   message: "&e全服掉落物已清理！"
-
-# 水晶限速
-min_crystal_age: 3
 
 RespawnRegular:
   enable: true
@@ -76,5 +76,3 @@ Regions:
     x: 805
     y: 129
     z: 796
-
-

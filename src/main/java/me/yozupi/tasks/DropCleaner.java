@@ -33,7 +33,7 @@ public class DropCleaner {
         Bukkit.getGlobalRegionScheduler().runAtFixedRate(
                 plugin,
                 task -> cleanDrops(),
-                0L,
+                1L,
                 intervalMinutes * 20L * 60L
         );
     }
@@ -54,3 +54,4 @@ public class DropCleaner {
         }
     }
 }
+
