@@ -2,15 +2,19 @@ package me.yozupi;
 
 import me.yozupi.command.Commands;
 import me.yozupi.listener.Listeners;
+import me.yozupi.tasks.ArenaCleaner;
+import me.yozupi.tasks.CrystalCleaner;
+import me.yozupi.tasks.DropCleaner;
 import me.yozupi.utils.MessageUtils;
 import me.yozupi.utils.TimerUtils;
 import me.yozupi.utils.Utils;
+import org.bukkit.Bukkit;
 import org.bukkit.ChatColor;
 import org.bukkit.plugin.java.JavaPlugin;
 
 import java.util.List;
 
-public final class CrystalLeader extends JavaPlugin {
+public class CrystalLeader extends JavaPlugin {
     public static CrystalLeader INSTANCE;
 
     @Override
@@ -32,6 +36,21 @@ public final class CrystalLeader extends JavaPlugin {
             // 这里注册事件
             Listeners.register();
 
+            new DropCleaner(this).start();
+
+            Bukkit.getGlobalRegionScheduler().runAtFixedRate(
+                    this,
+                    task -> new CrystalCleaner().run(),
+                    0L,
+                    20L * 60 * 60
+            );
+            Bukkit.getGlobalRegionScheduler().runAtFixedRate(
+                    this,
+                    task -> new ArenaCleaner().run(),
+                    0L,
+                    20L * 60 * 60
+            );
+
             getLogger().info(ChatColor.BLUE + """
                     
                        ____                _        _   _                   _          \s
@@ -42,6 +61,7 @@ public final class CrystalLeader extends JavaPlugin {
                                  |___/                                                 \s
                     """);
         });
+
         getLogger().info(MessageUtils.withColor("Loaded CrystalLeader, it took time: " + time + "ms"));
     }
 
@@ -73,3 +93,4 @@ public final class CrystalLeader extends JavaPlugin {
         return INSTANCE.getConfig().getStringList(path);
     }
 }
+

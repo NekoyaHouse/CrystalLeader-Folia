@@ -26,7 +26,7 @@ public class Player implements Listener {
 
     @EventHandler
     private void onPlayerQuit(PlayerQuitEvent event) {
-        if (Regions.isInAnyPvp(event.getPlayer())) {
+        if (Regions.isInPVP(event.getPlayer())) {
             event.getPlayer().setHealth(0);
         }
 

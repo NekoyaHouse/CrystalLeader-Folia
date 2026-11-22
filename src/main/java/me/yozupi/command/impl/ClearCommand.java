@@ -20,7 +20,7 @@ public class ClearCommand extends MyCommand {
         player.getInventory().remove(Material.AIR);
         player.getInventory().clear();
 
-        player.sendMessage(ChatUtils.PREFIX + ChatColor.RED + "您的背包已经清空!");
+        player.sendMessage(ChatUtils.getPrefix() + ChatColor.RED + "您的背包已经清空!");
 
         return true;
     }

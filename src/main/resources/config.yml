@@ -1,35 +1,80 @@
+prefix: "&7[&aCrystalLeader&7] &f"
+
+# 掉落物清理
+DropCleaner:
+  enable: true
+  interval-minutes: 2
+  message: "&e全服掉落物已清理！"
+
+# 水晶限速
+min_crystal_age: 3
+
+RespawnRegular:
+  enable: true
+  clearInventory: true
+  world: 'world_nether'
+
 FrameItems:
   enable: true
   title: "&6&lFrameItems &8>>"
   size: 9
 
+ArenaClear:
+  arena1:
+    world: "world"
+    from:
+      x: -250
+      y: -64
+      z: -250
+    to:
+      x: 250
+      y: -10
+      z: 250
+    ExceptBlocks:
+      - "BEDROCK"
+      - "BARRIER"
+      - "COMMAND_BLOCK"
+  nether:
+    world: "world_nether"
+    from:
+      x: -250
+      y: 50
+      z: -250
+    to:
+      x: 250
+      y: 0
+      z: 250
+    ExceptBlocks:
+      - "BEDROCK"
+      - "BARRIER"
+      - "COMMAND_BLOCK"
+
 Regions:
   AnyPvp:
     pvpArea1:
+      world: "world"
       from:
-        x: -150
-        y: 45
-        z: -150
+        x: -250
+        y: -64
+        z: -250
       to:
-        x: 150
-        y: 0
-        z: 150
+        x: 250
+        y: -10
+        z: 250
     pvpArea2:
+      world: "world_nether"
       from:
-        x: -150
-        y: 45
-        z: -150
+        x: -250
+        y: 50
+        z: -250
       to:
-        x: 150
+        x: 250
         y: 0
-        z: 150
+        z: 250
   kitCreator:
     world: "world"
     x: 805
     y: 129
     z: 796
 
-RespawnRegular:
-  enable: true
-  clearInventory: true
-  world: 'world_nether'
+

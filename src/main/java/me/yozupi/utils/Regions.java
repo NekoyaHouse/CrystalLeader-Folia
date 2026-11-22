@@ -1,7 +1,9 @@
 package me.yozupi.utils;
 
 import me.yozupi.CrystalLeader;
+import org.bukkit.Bukkit;
 import org.bukkit.Location;
+import org.bukkit.World;
 import org.bukkit.entity.Player;
 
 public class Regions {
@@ -34,15 +36,28 @@ public class Regions {
                 && z >= from.getBlockZ() && z <= to.getBlockZ();
     }
 
-    public static boolean isInAnyPvp(Player player) {
-        Regions pvpArea1 = new Regions(
-                new Location(player.getWorld(), CrystalLeader.configInt("Regions.AnyPvp.pvpArea1.from.x"), CrystalLeader.configInt("Regions.AnyPvp.pvpArea1.from.y"), CrystalLeader.configInt("Regions.AnyPvp.pvpArea1.from.z")),
-                new Location(player.getWorld(), CrystalLeader.configInt("Regions.AnyPvp.pvpArea1.to.x"), CrystalLeader.configInt("Regions.AnyPvp.pvpArea1.to.y"), CrystalLeader.configInt("Regions.AnyPvp.pvpArea1.to.z"))
+    public static boolean isInPVP(Player player) {
+        return isInPvpArea(player, "Regions.AnyPvp.pvpArea1") || isInPvpArea(player, "Regions.AnyPvp.pvpArea2");
+    }
+
+    private static boolean isInPvpArea(Player player, String path) {
+        World world = Bukkit.getWorld(CrystalLeader.configString(path + ".world"));
+
+        Regions area = new Regions(
+                new Location(
+                        world,
+                        CrystalLeader.configInt(path + ".from.x"),
+                        CrystalLeader.configInt(path + ".from.y"),
+                        CrystalLeader.configInt(path + ".from.z")
+                ),
+                new Location(
+                        world,
+                        CrystalLeader.configInt(path + ".to.x"),
+                        CrystalLeader.configInt(path + ".to.y"),
+                        CrystalLeader.configInt(path + ".to.z")
+                )
         );
-        Regions pvpArea2 = new Regions(
-                new Location(player.getWorld(), CrystalLeader.configInt("Regions.AnyPvp.pvpArea2.from.x"), CrystalLeader.configInt("Regions.AnyPvp.pvpArea2.from.y"), CrystalLeader.configInt("Regions.AnyPvp.pvpArea2.from.z")),
-                new Location(player.getWorld(), CrystalLeader.configInt("Regions.AnyPvp.pvpArea2.to.x"), CrystalLeader.configInt("Regions.AnyPvp.pvpArea2.to.y"), CrystalLeader.configInt("Regions.AnyPvp.pvpArea2.to.z"))
-        );
-        return pvpArea1.isInArea(player.getLocation()) || pvpArea2.isInArea(player.getLocation());
+
+        return area.isInArea(player.getLocation());
     }
 }

@@ -1,20 +1,20 @@
 package me.yozupi.listener;
 
 import me.yozupi.CrystalLeader;
-import me.yozupi.listener.impl.FrameItems;
-import me.yozupi.listener.impl.Player;
-import me.yozupi.listener.impl.RespawnRegular;
+import me.yozupi.listener.impl.*;
 import org.bukkit.Bukkit;
 import org.bukkit.event.Listener;
 
 public class Listeners {
     public static void register() {
-        register(new FrameItems());
-        register(new Player());
-        register(new RespawnRegular());
+        add(new AntiPortalCreate());
+        add(new CrystalSpeedLimiter());
+        add(new FrameItems());
+        add(new Player());
+        add(new RespawnRegular());
     }
 
-    private static void register(Listener listener) {
+    private static void add(Listener listener) {
         Bukkit.getPluginManager().registerEvents(listener, CrystalLeader.INSTANCE);
     }
 }

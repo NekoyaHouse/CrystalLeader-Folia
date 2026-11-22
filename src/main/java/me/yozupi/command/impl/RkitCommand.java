@@ -18,8 +18,8 @@ public class RkitCommand extends MyCommand {
     protected boolean onCommand(CommandSender sender, String label, String[] args) {
         if (!(sender instanceof Player player)) return false;
 
-        if (Regions.isInAnyPvp(player)) {
-            sender.sendMessage(ChatUtils.PREFIX + ChatUtils.cantUseThisInPvp());
+        if (Regions.isInPVP(player)) {
+            sender.sendMessage(ChatUtils.getPrefix() + ChatUtils.cantUseThisInPvp());
             return true;
         }
 
@@ -27,7 +27,7 @@ public class RkitCommand extends MyCommand {
 
         player.teleportAsync(destination).thenAccept(success -> {
             if (!success) return;
-            player.sendMessage(ChatUtils.PREFIX + ChatColor.BLUE + "您已传送到kit制作室");
+            player.sendMessage(ChatUtils.getPrefix() + ChatColor.BLUE + "您已传送到kit制作室");
         });
 
         return true;

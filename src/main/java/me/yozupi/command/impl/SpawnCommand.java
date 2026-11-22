@@ -17,8 +17,8 @@ public class SpawnCommand extends MyCommand {
     protected boolean onCommand(CommandSender sender, String label, String[] args) {
         if (!(sender instanceof Player player)) return false;
 
-        if (Regions.isInAnyPvp(player)) {
-            sender.sendMessage(ChatUtils.PREFIX + ChatUtils.cantUseThisInPvp());
+        if (Regions.isInPVP(player)) {
+            sender.sendMessage(ChatUtils.getPrefix() + ChatUtils.cantUseThisInPvp());
             return true;
         }
 
