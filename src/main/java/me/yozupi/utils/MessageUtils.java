@@ -1,4 +1,4 @@
-package dev.mahiro.utils;
+package me.yozupi.utils;
 
 import org.bukkit.ChatColor;
 

@@ -1,7 +1,7 @@
-package dev.mahiro.listener.impl;
+package me.yozupi.listener.impl;
 
-import dev.mahiro.CrystalLeader;
-import dev.mahiro.utils.Regions;
+import me.yozupi.CrystalLeader;
+import me.yozupi.utils.Regions;
 import org.bukkit.ChatColor;
 import org.bukkit.configuration.file.FileConfiguration;
 import org.bukkit.event.EventHandler;

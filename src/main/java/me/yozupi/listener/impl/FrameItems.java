@@ -1,7 +1,7 @@
-package dev.mahiro.listener.impl;
+package me.yozupi.listener.impl;
 
-import dev.mahiro.CrystalLeader;
-import dev.mahiro.utils.MessageUtils;
+import me.yozupi.CrystalLeader;
+import me.yozupi.utils.MessageUtils;
 import net.kyori.adventure.text.Component;
 import org.bukkit.Bukkit;
 import org.bukkit.Material;

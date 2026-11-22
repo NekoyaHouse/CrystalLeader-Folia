@@ -1,9 +1,9 @@
-package dev.mahiro.command.impl;
+package me.yozupi.command.impl;
 
-import dev.mahiro.CrystalLeader;
-import dev.mahiro.command.MyCommand;
-import dev.mahiro.utils.ChatUtils;
-import dev.mahiro.utils.Regions;
+import me.yozupi.CrystalLeader;
+import me.yozupi.command.MyCommand;
+import me.yozupi.utils.ChatUtils;
+import me.yozupi.utils.Regions;
 import org.bukkit.ChatColor;
 import org.bukkit.Location;
 import org.bukkit.command.CommandSender;

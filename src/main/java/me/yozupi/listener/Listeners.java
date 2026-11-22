@@ -1,9 +1,9 @@
-package dev.mahiro.listener;
+package me.yozupi.listener;
 
-import dev.mahiro.CrystalLeader;
-import dev.mahiro.listener.impl.FrameItems;
-import dev.mahiro.listener.impl.Player;
-import dev.mahiro.listener.impl.RespawnRegular;
+import me.yozupi.CrystalLeader;
+import me.yozupi.listener.impl.FrameItems;
+import me.yozupi.listener.impl.Player;
+import me.yozupi.listener.impl.RespawnRegular;
 import org.bukkit.Bukkit;
 import org.bukkit.event.Listener;
 

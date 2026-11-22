@@ -2,6 +2,6 @@ name: CrystalLeader
 version: '${version}'
 description: "Pig god im happy."
 folia-supported: true
-main: dev.mahiro.CrystalLeader
+main: me.yozupi.CrystalLeader
 api-version: '1.21'
-authors: [ Fin_LemonKe ]
+authors: [ Yozupi ]

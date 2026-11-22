@@ -1,7 +1,7 @@
-package dev.mahiro.listener.impl;
+package me.yozupi.listener.impl;
 
-import dev.mahiro.CrystalLeader;
-import dev.mahiro.utils.Utils;
+import me.yozupi.CrystalLeader;
+import me.yozupi.utils.Utils;
 import org.bukkit.Location;
 import org.bukkit.event.EventHandler;
 import org.bukkit.event.Listener;

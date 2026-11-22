@@ -1,6 +1,7 @@
-package dev.mahiro.command;
+package me.yozupi.command;
 
-import dev.mahiro.CrystalLeader;
+import com.google.common.collect.ImmutableList;
+import me.yozupi.CrystalLeader;
 import org.apache.commons.lang3.Validate;
 import org.bukkit.Location;
 import org.bukkit.command.Command;
@@ -85,8 +86,7 @@ public abstract class MyCommand extends Command {
     }
 
     protected List<String> onTabComplete(CommandSender sender, String alias, String[] args) {
-        if (!sender.getServer().suggestPlayerNamesWhenNullTabCompletions())
-            return com.google.common.collect.ImmutableList.of();
+        if (!sender.getServer().suggestPlayerNamesWhenNullTabCompletions()) return ImmutableList.of();
         return tabComplete(sender, alias, args);
     }
 }

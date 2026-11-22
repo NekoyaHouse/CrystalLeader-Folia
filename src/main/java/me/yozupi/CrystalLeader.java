@@ -1,10 +1,10 @@
-package dev.mahiro;
+package me.yozupi;
 
-import dev.mahiro.command.Commands;
-import dev.mahiro.listener.Listeners;
-import dev.mahiro.utils.MessageUtils;
-import dev.mahiro.utils.TimerUtils;
-import dev.mahiro.utils.Utils;
+import me.yozupi.command.Commands;
+import me.yozupi.listener.Listeners;
+import me.yozupi.utils.MessageUtils;
+import me.yozupi.utils.TimerUtils;
+import me.yozupi.utils.Utils;
 import org.bukkit.ChatColor;
 import org.bukkit.plugin.java.JavaPlugin;
 

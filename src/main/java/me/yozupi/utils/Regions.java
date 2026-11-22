@@ -1,6 +1,6 @@
-package dev.mahiro.utils;
+package me.yozupi.utils;
 
-import dev.mahiro.CrystalLeader;
+import me.yozupi.CrystalLeader;
 import org.bukkit.Location;
 import org.bukkit.entity.Player;
 

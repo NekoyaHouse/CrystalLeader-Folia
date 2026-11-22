@@ -1,4 +1,4 @@
-package dev.mahiro.utils;
+package me.yozupi.utils;
 
 public class TimerUtils {
     private long timeStamp = System.currentTimeMillis();
