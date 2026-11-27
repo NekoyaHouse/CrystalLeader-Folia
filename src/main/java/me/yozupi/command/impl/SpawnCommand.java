@@ -23,7 +23,7 @@ public class SpawnCommand extends MyCommand {
             return true;
         }
 
-        player.teleportAsync(new Location(Utils.NETHER, 0.5, 70, 0.5));
+        player.teleportAsync(new Location(Utils.OVERWORLD, 0.5, 10, 0.5, -90.0f, 0.0f));
 
         return true;
     }

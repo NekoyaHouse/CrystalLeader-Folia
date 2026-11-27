@@ -56,9 +56,7 @@ public class ArenaCleaner implements Runnable {
         com.sk89q.worldedit.world.World weWorld = BukkitAdapter.adapt(bukkitWorld);
         Set<BlockType> exceptTypes = exceptBlockNames.stream().map(BlockTypes::get).filter(Objects::nonNull).collect(Collectors.toSet());
 
-        try (EditSession session = WorldEdit.getInstance().newEditSessionBuilder().world(weWorld).maxBlocks(-1).build()) {
-            session.setBlockChangeLimit(-1);
-
+        try (EditSession session = WorldEdit.getInstance().newEditSessionBuilder().world(weWorld).limitUnlimited().build()) {
             CuboidRegion region = new CuboidRegion(weWorld, BlockVector3.at(minX, minY, minZ), BlockVector3.at(maxX, maxY, maxZ));
             Mask clearMask = exceptTypes.isEmpty() ? Masks.alwaysTrue() : Masks.negate(new BlockTypeMask(session, exceptTypes));
 

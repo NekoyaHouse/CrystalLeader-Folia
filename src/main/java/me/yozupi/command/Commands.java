@@ -8,7 +8,7 @@ public class Commands {
     public static void register() {
         add(new ClearCommand());
         add(new DonateCommand());
-        add(new OverworldCommand());
+        add(new NetherCommand());
         add(new RkitCommand());
         add(new SpawnCommand());
         add(new SuicideCommand());

@@ -13,14 +13,14 @@ public class RespawnRegular implements Listener {
     public void onPlayerRespawn(PlayerRespawnEvent event) {
         if (!CrystalLeader.INSTANCE.getConfig().getBoolean("RespawnRegular.enable")) return;
 
-        event.setRespawnLocation(new Location(Utils.NETHER, 0.5, 70, 0.5));
+        event.setRespawnLocation(new Location(Utils.OVERWORLD, 0.5, 10, 0.5, -90.0f, 0.0f));
     }
 
     @EventHandler
     public void onPlayerJoin(PlayerJoinEvent event) {
         if (!CrystalLeader.INSTANCE.getConfig().getBoolean("RespawnRegular.enable")) return;
 
-        event.getPlayer().teleportAsync(new Location(Utils.NETHER, 0.5, 70, 0.5)).exceptionally(ex -> {
+        event.getPlayer().teleportAsync(new Location(Utils.OVERWORLD, 0.5, 10, 0.5, -90.0f, 0.0f)).exceptionally(ex -> {
             event.getPlayer().sendMessage("§c传送至重生点失败: " + ex.getMessage());
             return null;
         });

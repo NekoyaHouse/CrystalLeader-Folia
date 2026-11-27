@@ -21,8 +21,7 @@ public class CrystalCleaner implements Runnable {
             return;
         }
 
-        ConfigurationSection arenaClear = CrystalLeader.INSTANCE.getConfig()
-                .getConfigurationSection("ArenaClear");
+        ConfigurationSection arenaClear = CrystalLeader.INSTANCE.getConfig().getConfigurationSection("ArenaClear");
         if (arenaClear == null) {
             return;
         }

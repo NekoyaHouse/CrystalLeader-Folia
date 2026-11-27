@@ -8,10 +8,10 @@ import org.bukkit.Location;
 import org.bukkit.command.CommandSender;
 import org.bukkit.entity.Player;
 
-public class OverworldCommand extends MyCommand {
+public class NetherCommand extends MyCommand {
 
-    public OverworldCommand() {
-        super("overworld", "Teleports you to the overworld.");
+    public NetherCommand() {
+        super("nether", "Teleport you to the nether.");
     }
 
     @Override
@@ -23,7 +23,7 @@ public class OverworldCommand extends MyCommand {
             return true;
         }
 
-        player.teleportAsync(new Location(Utils.OVERWORLD, 0.5, 10, 0.5));
+        player.teleportAsync(new Location(Utils.NETHER, 0.5, 70, 0.5));
 
         return true;
     }
