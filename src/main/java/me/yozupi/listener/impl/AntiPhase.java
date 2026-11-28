@@ -150,7 +150,11 @@ public class AntiPhase implements Listener {
         return Collision.CLEAR;
     }
 
-    private enum Collision {CLEAR, BLOCKED, UNKNOWN}
+    private enum Collision {
+        CLEAR,
+        BLOCKED,
+        UNKNOWN
+    }
 
     private static final class State {
         private Location safe;
