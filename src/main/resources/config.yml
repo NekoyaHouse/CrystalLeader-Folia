@@ -6,7 +6,12 @@ min_crystal_age: 3
 RespawnRegular:
   enable: true
   clearInventory: true
-  world: 'world_nether'
+  world: 'world'
+
+DroppedItemClear:
+  enable: true
+  interval-seconds: 120
+  worlds: []
 
 FrameItems:
   enable: true
@@ -17,56 +22,48 @@ ArenaClear:
   arena1:
     world: "world"
     from:
-      x: -250
+      x: -150
       y: -64
-      z: -250
+      z: -150
     to:
-      x: 250
+      x: 150
       y: -10
-      z: 250
-    ExceptBlocks:
-      - "bedrock"
-      - "barrier"
-      - "command_block"
+      z: 150
   nether:
     world: "world_nether"
     from:
-      x: -250
+      x: -150
       y: 50
-      z: -250
+      z: -150
     to:
-      x: 250
+      x: 150
       y: 0
-      z: 250
-    ExceptBlocks:
-      - "bedrock"
-      - "barrier"
-      - "command_block"
+      z: 150
 
 Regions:
   AnyPvp:
     pvpArea1:
       world: "world"
       from:
-        x: -250
+        x: -150
         y: -64
-        z: -250
+        z: -150
       to:
-        x: 250
+        x: 150
         y: -10
-        z: 250
+        z: 150
     pvpArea2:
       world: "world_nether"
       from:
-        x: -250
+        x: -150
         y: 50
-        z: -250
+        z: -150
       to:
-        x: 250
+        x: 150
         y: 0
-        z: 250
+        z: 150
   kitCreator:
     world: "world"
-    x: 805
-    y: 129
-    z: 796
+    x: 42
+    y: 12
+    z: 0

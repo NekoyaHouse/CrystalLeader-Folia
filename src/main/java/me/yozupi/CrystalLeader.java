@@ -2,6 +2,8 @@ package me.yozupi;
 
 import me.yozupi.command.Commands;
 import me.yozupi.listener.Listeners;
+import me.yozupi.tasks.ArenaClearer;
+import me.yozupi.tasks.DroppedClearer;
 import me.yozupi.utils.MessageUtils;
 import me.yozupi.utils.TimerUtils;
 import me.yozupi.utils.Utils;
@@ -12,6 +14,9 @@ import java.util.List;
 
 public class CrystalLeader extends JavaPlugin {
     public static CrystalLeader INSTANCE;
+
+    private ArenaClearer arenaClearer;
+    private DroppedClearer droppedClearer;
 
     @Override
     public void onEnable() {
@@ -32,6 +37,12 @@ public class CrystalLeader extends JavaPlugin {
             // 这里注册事件
             Listeners.register();
 
+            arenaClearer = new ArenaClearer(this);
+            arenaClearer.start();
+
+            droppedClearer = new DroppedClearer(this);
+            droppedClearer.start();
+
             getLogger().info(ChatColor.BLUE + """
                     
                        ____                _        _   _                   _          \s
@@ -48,8 +59,14 @@ public class CrystalLeader extends JavaPlugin {
 
     @Override
     public void onDisable() {
+        if (arenaClearer != null) arenaClearer.stop();
+        if (droppedClearer != null) droppedClearer.stop();
         Utils.onDisable();
         getLogger().info(MessageUtils.withColor(ChatColor.RED + "Disabled CrystalLeader, thanks for using OwO"));
+    }
+
+    public ArenaClearer getArenaClearer() {
+        return arenaClearer;
     }
 
     private Long calcTime(Runnable runnable) {

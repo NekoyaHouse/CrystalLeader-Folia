@@ -5,3 +5,7 @@ folia-supported: true
 main: me.yozupi.CrystalLeader
 api-version: '1.21'
 authors: [ Yozupi ]
+permissions:
+  crystalleader.clean:
+    description: 允许手动清理场地
+    default: op
