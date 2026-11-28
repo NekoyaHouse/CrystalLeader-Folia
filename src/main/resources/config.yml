@@ -75,7 +75,7 @@ Messages:
     countdown: "&e还有 {seconds} 秒就要打扫场地啦，请注意安全喵～"
     start: "&e场地大扫除开始啦！小心脚下喵～"
     complete: "&a场地打扫干净啦，祝大家玩得开心喵～"
-    error: "&c呜，打扫时遇到小问题了，请管理员看看控制台喵！"
+    error: "&c呜，打扫时遇到小问题了，请管理员先生看看控制台喵！"
   clean:
     invalidSeconds: "&c请输入 0 到 86400 之间的整数秒数喵～"
     started: "&a收到！这就开始打扫场地喵～"
