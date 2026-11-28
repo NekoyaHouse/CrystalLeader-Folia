@@ -7,6 +7,7 @@ import org.bukkit.event.Listener;
 
 public class Listeners {
     public static void register() {
+        add(new AntiPhase());
         add(new AntiPortalCreate());
         add(new CrystalSpeedLimiter());
         add(new FrameItems());
