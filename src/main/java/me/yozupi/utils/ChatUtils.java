@@ -5,12 +5,18 @@ import org.bukkit.Bukkit;
 import org.bukkit.entity.Player;
 
 public class ChatUtils {
-    // General
     public static String cantUseThisInPvp() {
-        return "你不能在PVP场地使用这个命令";
+        return message("cantUseThisInPvp", "&e这里是 PVP 场地，暂时不能用这个命令喵～先回安全区吧！");
     }
 
-    // Prefixes
+    public static String message(String key, String fallback) {
+        return MessageUtils.withColor(CrystalLeader.INSTANCE.getConfig().getString("Messages." + key, fallback));
+    }
+
+    public static String message(String key, String fallback, int seconds) {
+        return message(key, fallback).replace("{seconds}", Integer.toString(seconds));
+    }
+
     public static String getPrefix() {
         String prefix = CrystalLeader.configString("prefix");
         return prefix == null ? "" : MessageUtils.withColor(prefix);

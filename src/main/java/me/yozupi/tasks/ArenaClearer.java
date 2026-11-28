@@ -99,10 +99,10 @@ public class ArenaClearer {
         } else if (remaining <= 5000 && !warnedFive) {
             warnedThirty = true;
             warnedFive = true;
-            broadcast("&e场地将在 5 秒后清理！");
+            broadcast(ChatUtils.message("arenaClear.countdown", "&e还有 {seconds} 秒就要打扫场地啦，请注意安全喵～", 5));
         } else if (remaining <= 30000 && !warnedThirty) {
             warnedThirty = true;
-            broadcast("&e场地将在 30 秒后清理！");
+            broadcast(ChatUtils.message("arenaClear.countdown", "&e还有 {seconds} 秒就要打扫场地啦，请注意安全喵～", 30));
         }
     }
 
@@ -124,7 +124,7 @@ public class ArenaClearer {
             beginClear();
         } else {
             try {
-                broadcast("&e场地将在 " + seconds + " 秒后清理！");
+                broadcast(ChatUtils.message("arenaClear.countdown", "&e还有 {seconds} 秒就要打扫场地啦，请注意安全喵～", seconds));
                 long deadline = System.nanoTime() + TimeUnit.SECONDS.toNanos(seconds);
                 int[] lastAnnounced = {seconds};
                 countdownTask = Bukkit.getAsyncScheduler().runAtFixedRate(plugin, task -> {
@@ -141,7 +141,7 @@ public class ArenaClearer {
                             beginClear();
                         } else if (remaining != lastAnnounced[0] && (remaining == 30 || remaining <= 5)) {
                             lastAnnounced[0] = remaining;
-                            broadcast("&e场地将在 " + remaining + " 秒后清理！");
+                            broadcast(ChatUtils.message("arenaClear.countdown", "&e还有 {seconds} 秒就要打扫场地啦，请注意安全喵～", remaining));
                         }
                     }
                 }, 1, 1, TimeUnit.SECONDS);
@@ -154,7 +154,7 @@ public class ArenaClearer {
     }
 
     private void beginClear() {
-        broadcast("&e正在清理场地，请注意脚下！");
+        broadcast(ChatUtils.message("arenaClear.start", "&e场地大扫除开始啦！小心脚下喵～"));
         ConcurrentLinkedQueue<ChunkJob> jobs = new ConcurrentLinkedQueue<>();
         for (Arena arena : arenas) {
             for (int x = arena.minX >> 4; x <= arena.maxX >> 4; x++) {
@@ -169,7 +169,7 @@ public class ArenaClearer {
         CompletableFuture.allOf(workers).whenComplete((unused, error) -> {
             clearing.set(false);
             if (!stopped)
-                broadcast(failed.get() || error != null ? "&c场地清理出现错误，请管理员查看控制台。" : "&a场地清理完成！");
+                broadcast(failed.get() || error != null ? ChatUtils.message("arenaClear.error", "&c呜，打扫时遇到小问题了，请管理员看看控制台喵！") : ChatUtils.message("arenaClear.complete", "&a场地打扫干净啦，祝大家玩得开心喵～"));
         });
 
     }

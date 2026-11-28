@@ -3,7 +3,6 @@ package me.yozupi.tasks;
 import io.papermc.paper.threadedregions.scheduler.ScheduledTask;
 import me.yozupi.CrystalLeader;
 import me.yozupi.utils.ChatUtils;
-import me.yozupi.utils.MessageUtils;
 import org.bukkit.Bukkit;
 import org.bukkit.Chunk;
 import org.bukkit.World;
@@ -101,7 +100,7 @@ public class DroppedClearer implements Listener {
     }
 
     private void broadcast() {
-        String message = ChatUtils.getPrefix() + MessageUtils.withColor("&e正在清理掉落物喵喵喵！");
+        String message = ChatUtils.getPrefix() + ChatUtils.message("droppedItemClear", "&e清洁小猫出动！正在收拾地上的掉落物喵～");
         for (Player player : Bukkit.getOnlinePlayers()) {
             player.getScheduler().run(plugin, task -> {
                 if (!stopped) player.sendMessage(message);

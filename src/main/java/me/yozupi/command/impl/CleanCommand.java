@@ -4,7 +4,6 @@ import me.yozupi.CrystalLeader;
 import me.yozupi.command.MyCommand;
 import me.yozupi.tasks.ArenaClearer;
 import me.yozupi.utils.ChatUtils;
-import me.yozupi.utils.MessageUtils;
 import org.bukkit.command.CommandSender;
 
 import java.util.List;
@@ -24,7 +23,7 @@ public class CleanCommand extends MyCommand {
                 seconds = Integer.parseInt(args[0]);
                 if (seconds < 0 || seconds > 86400) throw new NumberFormatException();
             } catch (NumberFormatException exception) {
-                sender.sendMessage(ChatUtils.getPrefix() + MessageUtils.withColor("&c倒计时必须是 0 到 86400 之间的整数（秒）。"));
+                sender.sendMessage(ChatUtils.getPrefix() + ChatUtils.message("clean.invalidSeconds", "&c请输入 0 到 86400 之间的整数秒数喵～"));
                 return true;
             }
         }
@@ -33,11 +32,13 @@ public class CleanCommand extends MyCommand {
         ArenaClearer.ClearResult result = clearer == null
                 ? ArenaClearer.ClearResult.UNAVAILABLE : clearer.clear(seconds);
         String message = switch (result) {
-            case STARTED -> seconds == 0 ? "&a已开始清理场地。" : "&a已设置清场倒计时：" + seconds + " 秒。";
-            case BUSY -> "&e场地正在倒计时或清理中，请勿重复执行。";
-            case UNAVAILABLE -> "&c场地清理不可用，请检查 ArenaClear 配置及世界是否已加载。";
+            case STARTED ->
+                    seconds == 0 ? ChatUtils.message("clean.started", "&a收到！这就开始打扫场地喵～") : ChatUtils.message("clean.scheduled", "&a记好啦，{seconds} 秒后开始打扫场地喵～", seconds);
+            case BUSY -> ChatUtils.message("clean.busy", "&e已经在准备或打扫啦，不要催小猫喵～");
+            case UNAVAILABLE ->
+                    ChatUtils.message("clean.unavailable", "&c找不到可以打扫的场地喵，请检查 ArenaClear 配置和世界加载状态～");
         };
-        sender.sendMessage(ChatUtils.getPrefix() + MessageUtils.withColor(message));
+        sender.sendMessage(ChatUtils.getPrefix() + message);
         return true;
     }
 
