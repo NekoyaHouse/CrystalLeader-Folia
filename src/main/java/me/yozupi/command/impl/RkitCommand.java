@@ -23,7 +23,7 @@ public class RkitCommand extends MyCommand {
             return true;
         }
 
-        Location destination = new Location(CrystalLeader.INSTANCE.getServer().getWorld(CrystalLeader.configString("Regions.kitCreator.world")), CrystalLeader.configInt("Regions.kitCreator.x"), CrystalLeader.configInt("Regions.kitCreator.y"), CrystalLeader.configInt("Regions.kitCreator.z"));
+        Location destination = new Location(CrystalLeader.INSTANCE.getServer().getWorld(CrystalLeader.configString("Regions.kitCreator.world")), CrystalLeader.configInt("Regions.kitCreator.x"), CrystalLeader.configInt("Regions.kitCreator.y"), CrystalLeader.configInt("Regions.kitCreator.z"), -90.0f, 0.0f);
 
         player.teleportAsync(destination).thenAccept(success -> {
             if (!success) return;

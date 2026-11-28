@@ -64,7 +64,7 @@ Regions:
         z: 150
   kitCreator:
     world: "world"
-    x: 42
+    x: 37
     y: 12
     z: 0
 
