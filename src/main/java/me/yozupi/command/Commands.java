@@ -7,6 +7,7 @@ import org.bukkit.command.Command;
 public class Commands {
     public static void register() {
         add(new ClearCommand());
+        add(new CleanCommand());
         add(new DonateCommand());
         add(new NetherCommand());
         add(new RkitCommand());

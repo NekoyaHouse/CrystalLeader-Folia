@@ -1,18 +1,17 @@
 prefix: "&7[&aCrystalLeader&7] &f"
 
 # 水晶限速
-min_crystal_age: 3
-
-# 掉落物清理
-DropCleaner:
-  enable: true
-  interval-minutes: 2
-  message: "&e全服掉落物已清理！"
+min_crystal_age: 1
 
 RespawnRegular:
   enable: true
   clearInventory: true
-  world: 'world_nether'
+  world: 'world'
+
+DroppedItemClear:
+  enable: true
+  interval-seconds: 120
+  worlds: []
 
 FrameItems:
   enable: true
@@ -23,56 +22,63 @@ ArenaClear:
   arena1:
     world: "world"
     from:
-      x: -250
+      x: -150
       y: -64
-      z: -250
+      z: -150
     to:
-      x: 250
+      x: 150
       y: -10
-      z: 250
-    ExceptBlocks:
-      - "BEDROCK"
-      - "BARRIER"
-      - "COMMAND_BLOCK"
+      z: 150
   nether:
     world: "world_nether"
     from:
-      x: -250
+      x: -150
       y: 50
-      z: -250
+      z: -150
     to:
-      x: 250
+      x: 150
       y: 0
-      z: 250
-    ExceptBlocks:
-      - "BEDROCK"
-      - "BARRIER"
-      - "COMMAND_BLOCK"
+      z: 150
 
 Regions:
   AnyPvp:
     pvpArea1:
       world: "world"
       from:
-        x: -250
+        x: -150
         y: -64
-        z: -250
+        z: -150
       to:
-        x: 250
+        x: 150
         y: -10
-        z: 250
+        z: 150
     pvpArea2:
       world: "world_nether"
       from:
-        x: -250
+        x: -150
         y: 50
-        z: -250
+        z: -150
       to:
-        x: 250
+        x: 150
         y: 0
-        z: 250
+        z: 150
   kitCreator:
     world: "world"
-    x: 805
-    y: 129
-    z: 796
+    x: 42
+    y: 12
+    z: 0
+
+Messages:
+  cantUseThisInPvp: "&e这里是 PVP 场地，暂时不能用这个命令喵～先回安全区吧！"
+  droppedItemClear: "&e清洁小猫出动！正在收拾地上的掉落物喵～"
+  arenaClear:
+    countdown: "&e还有 {seconds} 秒就要打扫场地啦，请注意安全喵～"
+    start: "&e场地大扫除开始啦！小心脚下喵～"
+    complete: "&a场地打扫干净啦，祝大家玩得开心喵～"
+    error: "&c呜，打扫时遇到小问题了，请管理员先生看看控制台喵！"
+  clean:
+    invalidSeconds: "&c请输入 0 到 86400 之间的整数秒数喵～"
+    started: "&a收到！这就开始打扫场地喵～"
+    scheduled: "&a记好啦，{seconds} 秒后开始打扫场地喵～"
+    busy: "&e已经在准备或打扫啦，不要催小猫喵～"
+    unavailable: "&c找不到可以打扫的场地喵，请检查 ArenaClear 配置和世界加载状态～"

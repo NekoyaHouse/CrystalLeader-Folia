@@ -2,13 +2,11 @@ package me.yozupi;
 
 import me.yozupi.command.Commands;
 import me.yozupi.listener.Listeners;
-import me.yozupi.tasks.ArenaCleaner;
-import me.yozupi.tasks.CrystalCleaner;
-import me.yozupi.tasks.DropCleaner;
+import me.yozupi.tasks.ArenaClearer;
+import me.yozupi.tasks.DroppedClearer;
 import me.yozupi.utils.MessageUtils;
 import me.yozupi.utils.TimerUtils;
 import me.yozupi.utils.Utils;
-import org.bukkit.Bukkit;
 import org.bukkit.ChatColor;
 import org.bukkit.plugin.java.JavaPlugin;
 
@@ -16,6 +14,9 @@ import java.util.List;
 
 public class CrystalLeader extends JavaPlugin {
     public static CrystalLeader INSTANCE;
+
+    private ArenaClearer arenaClearer;
+    private DroppedClearer droppedClearer;
 
     @Override
     public void onEnable() {
@@ -36,20 +37,11 @@ public class CrystalLeader extends JavaPlugin {
             // 这里注册事件
             Listeners.register();
 
-            new DropCleaner(this).start();
+            arenaClearer = new ArenaClearer(this);
+            arenaClearer.start();
 
-            Bukkit.getGlobalRegionScheduler().runAtFixedRate(
-                    this,
-                    task -> new CrystalCleaner().run(),
-                    1L,
-                    20L * 60 * 60
-            );
-            Bukkit.getGlobalRegionScheduler().runAtFixedRate(
-                    this,
-                    task -> new ArenaCleaner().run(),
-                    1L,
-                    20L * 60 * 60
-            );
+            droppedClearer = new DroppedClearer(this);
+            droppedClearer.start();
 
             getLogger().info(ChatColor.BLUE + """
                     
@@ -67,8 +59,14 @@ public class CrystalLeader extends JavaPlugin {
 
     @Override
     public void onDisable() {
+        if (arenaClearer != null) arenaClearer.stop();
+        if (droppedClearer != null) droppedClearer.stop();
         Utils.onDisable();
         getLogger().info(MessageUtils.withColor(ChatColor.RED + "Disabled CrystalLeader, thanks for using OwO"));
+    }
+
+    public ArenaClearer getArenaClearer() {
+        return arenaClearer;
     }
 
     private Long calcTime(Runnable runnable) {
