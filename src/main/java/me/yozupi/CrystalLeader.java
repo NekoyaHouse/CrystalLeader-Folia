@@ -2,13 +2,9 @@ package me.yozupi;
 
 import me.yozupi.command.Commands;
 import me.yozupi.listener.Listeners;
-import me.yozupi.tasks.ArenaCleaner;
-import me.yozupi.tasks.CrystalCleaner;
-import me.yozupi.tasks.DropCleaner;
 import me.yozupi.utils.MessageUtils;
 import me.yozupi.utils.TimerUtils;
 import me.yozupi.utils.Utils;
-import org.bukkit.Bukkit;
 import org.bukkit.ChatColor;
 import org.bukkit.plugin.java.JavaPlugin;
 
@@ -35,21 +31,6 @@ public class CrystalLeader extends JavaPlugin {
 
             // 这里注册事件
             Listeners.register();
-
-            new DropCleaner(this).start();
-
-            Bukkit.getGlobalRegionScheduler().runAtFixedRate(
-                    this,
-                    task -> new CrystalCleaner().run(),
-                    1L,
-                    20L * 60 * 60
-            );
-            Bukkit.getGlobalRegionScheduler().runAtFixedRate(
-                    this,
-                    task -> new ArenaCleaner().run(),
-                    1L,
-                    20L * 60 * 60
-            );
 
             getLogger().info(ChatColor.BLUE + """
                     

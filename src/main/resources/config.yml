@@ -3,12 +3,6 @@ prefix: "&7[&aCrystalLeader&7] &f"
 # 水晶限速
 min_crystal_age: 3
 
-# 掉落物清理
-DropCleaner:
-  enable: true
-  interval-minutes: 2
-  message: "&e全服掉落物已清理！"
-
 RespawnRegular:
   enable: true
   clearInventory: true
@@ -31,9 +25,9 @@ ArenaClear:
       y: -10
       z: 250
     ExceptBlocks:
-      - "BEDROCK"
-      - "BARRIER"
-      - "COMMAND_BLOCK"
+      - "bedrock"
+      - "barrier"
+      - "command_block"
   nether:
     world: "world_nether"
     from:
@@ -45,9 +39,9 @@ ArenaClear:
       y: 0
       z: 250
     ExceptBlocks:
-      - "BEDROCK"
-      - "BARRIER"
-      - "COMMAND_BLOCK"
+      - "bedrock"
+      - "barrier"
+      - "command_block"
 
 Regions:
   AnyPvp:

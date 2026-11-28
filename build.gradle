@@ -20,7 +20,7 @@ repositories {
 
 dependencies {
     compileOnly("io.papermc.paper:paper-api:1.21.11-R0.1-SNAPSHOT")
-    compileOnly "com.fastasyncworldedit:FastAsyncWorldEdit-Bukkit:2.16.3"
+    compileOnly "com.fastasyncworldedit:FastAsyncWorldEdit-Core:2.16.3"
 }
 
 tasks {
